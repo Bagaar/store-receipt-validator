@@ -21,7 +21,7 @@
 	],
 	"require" : {
 		"php" : ">=5.5",
-		"guzzlehttp/guzzle" : "~6.1",
+		"guzzlehttp/guzzle" : "~5.0",
 		"google/apiclient": "~1.1",
 		"robrichards/xmlseclibs": "^2.0"
 	},
