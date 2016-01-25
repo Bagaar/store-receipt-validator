@@ -168,7 +168,7 @@ class Validator
       $this->setSharedSecret($sharedSecret);
     }
 
-    $httpResponse = $this->getClient()->request('POST', null, ['body' => $this->encodeRequest()]);
+    $httpResponse = $this->getClient()->post($this->_endpoint, ['body' => $this->encodeRequest()]);
 
     if ($httpResponse->getStatusCode() != 200) {
       throw new RunTimeException('Unable to get response from itunes server');
@@ -181,7 +181,7 @@ class Validator
     if ($this->_endpoint == self::ENDPOINT_PRODUCTION && $response->getResultCode() == Response::RESULT_SANDBOX_RECEIPT_SENT_TO_PRODUCTION) {
       $client = new \GuzzleHttp\Client(['base_uri' => self::ENDPOINT_SANDBOX]);
 
-      $httpResponse = $client->request('POST', null, ['body' => $this->encodeRequest()]);
+      $httpResponse = $client->post($this->_endpoint, ['body' => $this->encodeRequest()]);
 
       if ($httpResponse->getStatusCode() != 200) {
         throw new RunTimeException('Unable to get response from itunes server');
